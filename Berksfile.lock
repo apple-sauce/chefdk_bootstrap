@@ -1,0 +1,7 @@
+DEPENDENCIES
+  chefdk_bootstrap
+    path: .
+    metadata: true
+
+GRAPH
+  chefdk_bootstrap (0.1.1)
