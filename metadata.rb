@@ -1,10 +1,10 @@
 name 'chefdk_bootstrap'
-maintainer 'Jamie Abellanosa'
-maintainer_email 'jamie.abellanosa@gatesfoundation.org'
+maintainer 'Apple-Sauce'
+maintainer_email 'Apple-Sauce@Saucey.com'
 license 'All Rights Reserved'
 description 'Installs/Configures chefdk_bootstrap'
 long_description 'Installs/Configures chefdk_bootstrap'
-version '0.1.1'
+version '0.1.3'
 chef_version '>= 12.1' if respond_to?(:chef_version)
 
 # The `issues_url` points to the location where issues for this cookbook are

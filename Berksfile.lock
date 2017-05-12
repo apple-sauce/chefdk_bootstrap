@@ -4,4 +4,4 @@ DEPENDENCIES
     metadata: true
 
 GRAPH
-  chefdk_bootstrap (0.1.1)
+  chefdk_bootstrap (0.1.3)
