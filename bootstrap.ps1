@@ -43,13 +43,8 @@ function Install-Project {
   # Set targetChefDk to latest version from metadata URL
   $metadataURL = "https://omnitruck.chef.io/stable/chefdk/metadata?p=windows&pv=2012r2&m=x86_64&v=latest"
 
-  if ( $env:http_proxy ) {
-    $getMetadata = Invoke-WebRequest -UseBasicParsing $metadataURL -Proxy $env:http_proxy -ProxyUseDefaultCredentials
-    if ( -not $? ) { die "Error downloading $metadataURL using proxy $env:http_proxy." }
-  } else {
-    $getMetadata = Invoke-WebRequest -UseBasicParsing $metadataURL
-    if ( -not $? ) { die "Error downloading $metadataURL. Do you need to set `$env:http_proxy ?" }
-  }
+ $getMetadata = Invoke-WebRequest -UseBasicParsing $metadataURL
+    if ( -not $? ) { die "Error downloading $metadataURL. Do you need to set `$env:http_proxy ?" 
 
   $latest_info = $getMetadata.Content
   $CHEFDK_LATEST_PATTERN = "version\s(\d{1,2}\.\d{1,2}\.\d{1,2})"
