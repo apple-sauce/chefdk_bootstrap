@@ -34,7 +34,7 @@ function Install-Project {
     [string] $json_attributes
   )
 
-  $version = '1.3.43.1'
+  $version = '1.3.43.1' 
 
   if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
     [Security.Principal.WindowsBuiltInRole] "Administrator")) {
