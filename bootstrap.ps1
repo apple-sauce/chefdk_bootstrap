@@ -71,7 +71,7 @@ function Install-Project {
   $env:HOME = $env:USERPROFILE
 
   $berksfile = @"
-  source 'https://supermarket.chef.io'
+  source 'https://supermarket.gatesfoundation.org'
 
   cookbook '$bootstrapCookbook'
 "@
@@ -151,13 +151,7 @@ function Install-Project {
   if ( -not $? ) { Pop-Location;  die "Error running berks to download cookbooks." }
 
   # run chef-client (installed by ChefDK) to bootstrap this machine
-  # Pass optional named parameter json_attributes to chef-client
-  if ($json_attributes -ne "") {
-    chef-client -A -z -l error -c $chefConfigPath -o $bootstrapCookbook --json-attributes $json_attributes
-  }
-  else {
-    chef-client -A -z -l error -c $chefConfigPath -o $bootstrapCookbook
-  }
+  chef-client -A -z -l error -c $chefConfigPath -o $bootstrapCookbook
 
   if ( -not $? ) { Pop-Location;  die "Error running chef-client." }
 
@@ -171,7 +165,7 @@ function Install-Project {
   Remove-Item env:BERKSHELF_CHEF_CONFIG
 
   # End message to indicate completion of setup
-  Write-Host "`n`nCongrats!!! Your workstation is now set up for Chef Development!"
+  Write-Host "`n`nCongrats fellow Chefee!!! Your workstation is now set up for Chef Development!"
 }
 set-alias install -value Install-Project
 
