@@ -123,13 +123,16 @@ function Install-Project {
         Remove-Item -Recurse $dotChefDKDir
       }
     }
-    if ( $env:http_proxy ) {
-      $installScript = Invoke-WebRequest -UseBasicParsing $omniUrl -Proxy $env:http_proxy -ProxyUseDefaultCredentials
-      if ( -not $? ) { die "Error downloading $omniUrl using proxy $env:http_proxy." }
-    } else {
-      $installScript = Invoke-WebRequest -UseBasicParsing $omniUrl
-      if ( -not $? ) { die "Error downloading $omniUrl. Do you need to set `$env:http_proxy ?" }
-    }
+    # if ( $env:http_proxy ) {
+    #   $installScript = Invoke-WebRequest -UseBasicParsing $omniUrl -Proxy $env:http_proxy -ProxyUseDefaultCredentials
+    #   if ( -not $? ) { die "Error downloading $omniUrl using proxy $env:http_proxy." }
+    # } else {
+    #   $installScript = Invoke-WebRequest -UseBasicParsing $omniUrl
+    #   if ( -not $? ) { die "Error downloading $omniUrl. Do you need to set `$env:http_proxy ?" }
+    # }
+    $installScript = Invoke-WebRequest -UseBasicParsing $omniUrl
+    if ( -not $? ) { die "Error downloading $omniUrl. Do you need to set `$env:http_proxy ?" }
+
     $installScript | Invoke-Expression
     if ( -not $? ) { die "Error running installation script" }
     Write-Host "Installing ChefDK version $targetChefDk. This might take a while..."
