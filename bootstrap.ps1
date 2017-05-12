@@ -171,5 +171,8 @@ function Install-Project {
   Write-Host "`n`nCongrats!!! Your workstation is now set up for Chef Development!"
 }
 set-alias install -value Install-Project
+
+Install-Project
+
 export-modulemember -function 'Install-Project' -alias 'install'
 }
