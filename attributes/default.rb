@@ -20,6 +20,8 @@ case node['platform_family']
 when 'mac_os_x'
   default['chefdk_bootstrap']['virtualbox']['url'] = 'http://download.virtualbox.org/virtualbox/4.2.8/VirtualBox-4.2.8-83876-OSX.dmg'
 when 'windows'
+  default['chefdk_bootstrap']['virtualbox']['url'] = ''
+  default['chefdk_bootstrap']['virtualbox']['version'] = ''
   default['chefdk_bootstrap']['virtualbox']['url'] = 'http://download.virtualbox.org/virtualbox/5.0.34/VirtualBox-5.0.34-113845-Win.exe'
   default['chefdk_bootstrap']['virtualbox']['version'] = '5.0.34' # Vbox::Helpers.vbox_version(node['virtualbox']['url'])
 when 'debian', 'rhel'
@@ -58,5 +60,5 @@ default['chefdk_bootstrap']['proxy']['http'] = ENV['http_proxy'] # 'http://mypro
 # Skip the proxy for these domains and IPs. This should be a comma-separated string
 default['chefdk_bootstrap']['proxy']['no_proxy'] = ENV['no_proxy'] # 'example.com,localhost,127.0.0.1'
 
-# default['chefdk_bootstrap']['virtualbox']['source'] = 'http://download.virtualbox.org/virtualbox/5.0.34/VirtualBox-5.0.34-113845-Win.exe'
-# default['chefdk_bootstrap']['virtualbox']['checksum'] = '26b9b0267870df4080826303b71ce1d50fd4f0ff924d3b8a878e4b770200e502'
+default['chefdk_bootstrap']['vagrant']['source'] = 'https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1.msi'
+default['chefdk_bootstrap']['vagrant']['checksum'] = 'db1fef59dd15ac90b6f5cfad20af7e15eccd814556a81f46e5422386166789a6'

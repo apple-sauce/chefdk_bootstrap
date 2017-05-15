@@ -5,9 +5,18 @@
 # The Inspec reference, with examples and extensive documentation, can be
 # found at http://inspec.io/docs/reference/resources/
 
-unless os.windows?
-  # This is an example test, replace with your own test.
-  describe user('root'), :skip do
-    it { should exist }
-  end
+describe package('Chef Client v12.19.36') do
+  it { should be_installed }
+end
+
+describe package('Microsoft Visual Studio Code') do
+  it { should be_installed }
+end
+
+describe package('ConEmu 170402.x64') do
+  it { should be_installed }
+end
+
+describe package('Vagrant') do
+  it { should be_installed }
 end

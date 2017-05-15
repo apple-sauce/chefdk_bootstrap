@@ -24,5 +24,5 @@ chef_version      '>= 12.1' if respond_to?(:chef_version)
 
 depends           'chocolatey'
 depends           'vs_code'
-depends           'vagrant'
+# depends           'vagrant'
 # depends           'virtualbox', '~> 1.0.3'
