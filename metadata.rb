@@ -1,4 +1,4 @@
-# Copyright 2015 Nordstrom, Inc.
+# Copyright 2017 Apple-Sauce
 #
 # The `issues_url` points to the location where issues for this cookbook are
 # tracked.  A `View Issues` link will be displayed on this cookbook's page when
@@ -25,4 +25,4 @@ chef_version      '>= 12.1' if respond_to?(:chef_version)
 depends           'chocolatey'
 depends           'vs_code'
 depends           'vagrant'
-depends           'virtualbox'
+# depends           'virtualbox', '~> 1.0.3'

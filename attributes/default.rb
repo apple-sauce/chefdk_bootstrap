@@ -13,29 +13,41 @@
 # limitations under the License.
 #
 
-# common things to install
-default['chefdk_bootstrap']['package'].tap do |install|
-  install['virtualbox'] = true
-  install['vagrant'] = true
-  install['git'] = true
-end
+default['chefdk_bootstrap']['virtualbox']['url'] = ''
+default['chefdk_bootstrap']['virtualbox']['version'] = ''
 
-# platform specific
 case node['platform_family']
-when 'windows'
-  default['chefdk_bootstrap']['package'].tap do |install|
-    install['kdiff3'] = true
-    install['gitextensions'] = true
-    install['poshgit'] = true
-    install['conemu'] = true
-    install['vs_code'] = true
-  end
 when 'mac_os_x'
-  default['chefdk_bootstrap']['package'].tap do |install|
-    install['iterm2'] = true
-    install['bash_profile'] = true
-  end
+  default['chefdk_bootstrap']['virtualbox']['url'] = 'http://download.virtualbox.org/virtualbox/4.2.8/VirtualBox-4.2.8-83876-OSX.dmg'
+when 'windows'
+  default['chefdk_bootstrap']['virtualbox']['url'] = 'http://download.virtualbox.org/virtualbox/5.0.34/VirtualBox-5.0.34-113845-Win.exe'
+  default['chefdk_bootstrap']['virtualbox']['version'] = '5.0.34' # Vbox::Helpers.vbox_version(node['virtualbox']['url'])
+when 'debian', 'rhel'
+  default['chefdk_bootstrap']['virtualbox']['version'] = '4.2'
 end
+# common things to install
+# default['chefdk_bootstrap']['package'].tap do |install|
+#   install['virtualbox'] = true
+#   install['vagrant'] = true
+#   install['git'] = true
+# end
+
+# # platform specific
+# case node['platform_family']
+# when 'windows'
+#   default['chefdk_bootstrap']['package'].tap do |install|
+#     install['kdiff3'] = true
+#     install['gitextensions'] = true
+#     install['poshgit'] = true
+#     install['conemu'] = true
+#     install['vs_code'] = true
+#   end
+# when 'mac_os_x'
+#   default['chefdk_bootstrap']['package'].tap do |install|
+#     install['iterm2'] = true
+#     install['bash_profile'] = true
+#   end
+# end
 
 # whether to mess with PowerShell settings
 default['chefdk_bootstrap']['powershell']['configure'] = true
@@ -46,5 +58,5 @@ default['chefdk_bootstrap']['proxy']['http'] = ENV['http_proxy'] # 'http://mypro
 # Skip the proxy for these domains and IPs. This should be a comma-separated string
 default['chefdk_bootstrap']['proxy']['no_proxy'] = ENV['no_proxy'] # 'example.com,localhost,127.0.0.1'
 
-default['chefdk_bootstrap']['virtualbox']['source'] = 'http://download.virtualbox.org/virtualbox/5.0.34/VirtualBox-5.0.34-113845-Win.exe'
-default['chefdk_bootstrap']['virtualbox']['checksum'] = '26b9b0267870df4080826303b71ce1d50fd4f0ff924d3b8a878e4b770200e502'
+# default['chefdk_bootstrap']['virtualbox']['source'] = 'http://download.virtualbox.org/virtualbox/5.0.34/VirtualBox-5.0.34-113845-Win.exe'
+# default['chefdk_bootstrap']['virtualbox']['checksum'] = '26b9b0267870df4080826303b71ce1d50fd4f0ff924d3b8a878e4b770200e502'
