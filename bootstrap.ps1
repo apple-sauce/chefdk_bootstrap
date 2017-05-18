@@ -29,7 +29,10 @@ function die {
 }
 
 function Install-Project {
-  
+  Param(
+    [string] $version,
+    [string] $json_attributes
+  )
   # run chef-client to bootstrap this machine 
   . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -channel current -project chefdk
 
