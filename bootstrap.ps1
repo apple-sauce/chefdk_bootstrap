@@ -11,12 +11,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#Requires -Version 3
 
-  # run chef-client to bootstrap this machine 
-  . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -channel current -project chefdk
+ # run chef-client to bootstrap this machine 
+# . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -channel current -project chefdk
 
-  chef-client -A -z -l error -c $chefConfigPath -o $bootstrapCookbook
-  
-  # End message to indicate completion of setup
-  Write-Host "`n`nCongrats fellow Chefee!!! Your workstation is now set up for Chef Development!"
+# chef-client -A -z -l error -c $chefConfigPath -o $bootstrapCookbook
+Write-Host " "
+Write-Host "Here are the top 10 CPU consuming processes right now"
+Write-Host " "
+Get-Process | Sort-Object CPU -Descending | Select-Object -First 10
+# Write-Host "`n`nCongrats fellow Chefee!!! Your workstation is now set up for Chef Development!"
