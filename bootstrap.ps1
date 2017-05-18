@@ -13,16 +13,8 @@
 # limitations under the License.
 
  # run chef-client to bootstrap this machine 
-# . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -channel current -project chefdk
-
-  $bootstrapCookbook = 'chefdk_bootstrap'
-
-  $userChefDir = Join-Path -path $env:USERPROFILE -childPath 'chef'
-  $dotChefDKDir = Join-Path -path $env:LOCALAPPDATA -childPath 'chefdk'
-  $tempInstallDir = Join-Path -path $env:TEMP -childpath 'chefdk_bootstrap'
-  $berksfilePath = Join-Path -path $tempInstallDir -childPath 'Berksfile'
-  $chefConfigPath = Join-Path -path $tempInstallDir -childPath 'client.rb'
+ . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -channel current -project chefdk
   
- chef-client -A -z -l error -c $chefConfigPath -o $bootstrapCookbook
+ chef-client -A -z -l error -o 'chefdk_bootstrap'
 
 # Write-Host "`n`nCongrats fellow Chefee!!! Your workstation is now set up for Chef Development!"
