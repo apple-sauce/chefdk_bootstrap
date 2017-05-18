@@ -13,26 +13,6 @@
 # limitations under the License.
 #Requires -Version 3
 
-new-module -name ChefDKBootstrap -scriptblock {
-function promptContinue {
-  param ($msg="Chefdk_bootstrap encountered an error")
-  $yn = Read-Host "$Msg. Continue? [y|N]"
-  if ( $yn -NotLike 'y*' ) {
-    Break
-  }
-}
-
-function die {
-  param ($msg="Chefdk_bootstrap encountered an error. Exiting")
-  Write-host "$msg."
-  Break
-}
-
-function Install-Project {
-  Param(
-    [string] $version,
-    [string] $json_attributes
-  )
   # run chef-client to bootstrap this machine 
   . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -channel current -project chefdk
 
@@ -40,10 +20,3 @@ function Install-Project {
   
   # End message to indicate completion of setup
   Write-Host "`n`nCongrats fellow Chefee!!! Your workstation is now set up for Chef Development!"
-}
-set-alias install -value Install-Project
-
-Install-Project
-
-export-modulemember -function 'Install-Project' -alias 'install'
-}
