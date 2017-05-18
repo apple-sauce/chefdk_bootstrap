@@ -13,10 +13,12 @@
 # limitations under the License.
 
  # run chef-client to bootstrap this machine 
- . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -channel current -project chefdk
+ #. { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -channel current -project chefdk
   
+ Set-Location "~\AppData\Local\Temp\"
+
  C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/apple-sauce/chefdk_bootstrap.git
 
- # chef-client -A -z -l error -o 'chefdk_bootstrap'
+ chef-client -A -z -l error -o 'chefdk_bootstrap'
 
 # Write-Host "`n`nCongrats fellow Chefee!!! Your workstation is now set up for Chef Development!"
