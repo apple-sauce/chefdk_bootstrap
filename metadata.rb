@@ -22,7 +22,7 @@ version           '0.1.4'
 
 chef_version      '>= 12.1' if respond_to?(:chef_version)
 
-depends           'chocolatey'
+# depends           'chocolatey'
 # depends           'vs_code'
 # depends           'chefdk'
 # depends           'vagrant'

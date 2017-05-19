@@ -5,7 +5,7 @@
 #
 #
 
-include_recipe 'chocolatey'
+# include_recipe 'chocolatey'
 # include_recipe 'vscode'
 
 # windows_package 'chefdk' do
@@ -16,14 +16,14 @@ include_recipe 'chocolatey'
 #   checksum node['chefdk_bootstrap']['chefdk']['checksum']
 # end
 #
-# case node['platform_family']
-# when 'windows'
-# chocolatey_package 'conemu' do
-#   # If conemu was installed outside chocolatey, it could be running this
-#   # installation script and we don't want to touch it
-#   not_if '(& "C:\Program Files\ConEmu\ConEmu\ConEmuC.exe" /IsConEmu); $LASTEXITCODE -eq 1'
-#   guard_interpreter :powershell_script
-# end
+case node['platform_family']
+when 'windows'
+chocolatey_package 'conemu' do
+  # If conemu was installed outside chocolatey, it could be running this
+  # installation script and we don't want to touch it
+  not_if '(& "C:\Program Files\ConEmu\ConEmu\ConEmuC.exe" /IsConEmu); $LASTEXITCODE -eq 1'
+  guard_interpreter :powershell_script
+end
 
 # windows_package 'virtualbox' do
 #   action :install
@@ -44,4 +44,4 @@ include_recipe 'chocolatey'
 #   returns [0, 1605, 1614, 1641]
 # end
 
-# end
+ end
