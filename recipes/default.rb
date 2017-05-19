@@ -18,13 +18,13 @@
 #
 case node['platform_family']
 when 'windows'
-chocolatey_package 'conemu' do
-  # If conemu was installed outside chocolatey, it could be running this
-  # installation script and we don't want to touch it
-  not_if '(& "C:\Program Files\ConEmu\ConEmu\ConEmuC.exe" /IsConEmu); $LASTEXITCODE -eq 1'
-  guard_interpreter :powershell_script
+  chocolatey_package 'conemu' do
+    # If conemu was installed outside chocolatey, it could be running this
+    # installation script and we don't want to touch it
+    not_if '(& "C:\Program Files\ConEmu\ConEmu\ConEmuC.exe" /IsConEmu); $LASTEXITCODE -eq 1'
+    guard_interpreter :powershell_script
+  end
 end
-
 # windows_package 'virtualbox' do
 #   action :install
 #   installer_type :custom
@@ -43,5 +43,3 @@ end
 #   checksum node['chefdk_bootstrap']['vagrant']['checksum']
 #   returns [0, 1605, 1614, 1641]
 # end
-
- end
