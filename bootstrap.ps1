@@ -18,8 +18,6 @@
    # run chef-client to bootstrap this machine 
  . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -channel current -project chefdk
   
-  Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-  
   Set-Location "~\AppData\Local\Temp\"
   mkdir cookbooks
   Set-Location "~\AppData\Local\Temp\cookbooks"
@@ -28,6 +26,8 @@
   # C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/chef-cookbooks/windows.git windows
   # C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/chef/ohai.git
 
+  Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+  
   # C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/Microsoft/vscode.git vscode
   Set-Location "~\AppData\Local\Temp\cookbooks\chefdk_bootstrap"
   berks vendor
