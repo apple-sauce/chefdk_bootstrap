@@ -14,31 +14,19 @@
   
   $env:HOME = $env:USERPROFILE
   $env:Path += ";C:\opscode\chefdk\bin"
-  $tempInstallDir = Join-Path -path $env:TEMP -childpath 'chefdk_bootstrap'
-  $chefConfigPath = Join-Path -path $tempInstallDir -childPath 'client.rb'
-  $berksfilePath = Join-Path -path $tempInstallDir -childPath 'Berksfile'
   
    # run chef-client to bootstrap this machine 
  . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -channel current -project chefdk
-
-
-  # Write out a local Berksfile for Berkshelf to use
-  $berksfile | Out-File -FilePath $berksfilePath -Encoding ASCII
-
-  # Write out minimal chef-client config file
-  $chefConfig | Out-File -FilePath $chefConfigPath -Encoding ASCII
 
   Set-Location "~\AppData\Local\Temp\"
   mkdir cookbooks
   Set-Location "~\AppData\Local\Temp\cookbooks"
   C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/apple-sauce/chefdk_bootstrap.git
-
+  C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/chocolatey/chocolatey-cookbook.git chocolatey
+  C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/Microsoft/vscode.git vscode
   Set-Location "~\AppData\Local\Temp\cookbooks\chefdk_bootstrap"
-  $env:BERKSHELF_CHEF_CONFIG = $chefConfigPath
   berks vendor
 
-  Set-Location "~\AppData\Local\Temp\"
-  
-  chef-client -A -z -l error -o 'chefdk_bootstrap' -c $chefConfigPath
+  chef-client -A -z -l error -o 'chefdk_bootstrap'
 
   # Write-Host "`n`nCongrats fellow Chefee!!! Your workstation is now set up for Chef Development!"
