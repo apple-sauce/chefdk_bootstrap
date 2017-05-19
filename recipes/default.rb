@@ -6,7 +6,7 @@
 #
 
 include_recipe 'chocolatey'
-include_recipe 'vs_code'
+include_recipe 'vscode'
 
 # windows_package 'chefdk' do
 #   action :install
