@@ -16,7 +16,7 @@
   $env:Path += ";C:\opscode\chefdk\bin"
   
   # run chef-client to bootstrap this machine 
-  . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -channel current -project chefdk -v '1.3.43'
+  . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -version 1.3.43 -channel stable  -project chefdk
   
   # need to set location for downloading of chefdk_bootstrap as well as create folder cookbook 
   Set-Location "~\AppData\Local\Temp\"
