@@ -1,6 +1,8 @@
 ---
 driver:
   name: vagrant
+  customize: 
+    clipboard: 'bidirectional'
 
 provisioner:
   name: chef_zero

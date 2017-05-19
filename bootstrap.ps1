@@ -15,23 +15,25 @@
   $env:HOME = $env:USERPROFILE
   $env:Path += ";C:\opscode\chefdk\bin"
   
-   # run chef-client to bootstrap this machine 
- . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -channel current -project chefdk
+  # run chef-client to bootstrap this machine 
+  . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -channel current -project chefdk
   
+  # need to set location for downloading of chefdk_bootstrap as well as create folder cookbook 
   Set-Location "~\AppData\Local\Temp\"
   mkdir cookbooks
   Set-Location "~\AppData\Local\Temp\cookbooks"
-  C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/apple-sauce/chefdk_bootstrap.git
-  # C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/chocolatey/chocolatey-cookbook.git chocolatey
-  # C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/chef-cookbooks/windows.git windows
-  # C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/chef/ohai.git
 
+  # downloading of the chefdk_bootstrap cookbook to local machine
+  C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/apple-sauce/chefdk_bootstrap.git
+
+  # install chocolatey
   Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-  
-  # C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/Microsoft/vscode.git vscode
+
+  # set location back to cookbook in order to run berks to get dependencies
   Set-Location "~\AppData\Local\Temp\cookbooks\chefdk_bootstrap"
   berks vendor
 
+  # run chef client to converge machine
   chef-client -A -z -l error -o 'chefdk_bootstrap'
 
-  # Write-Host "`n`nCongrats fellow Chefee!!! Your workstation is now set up for Chef Development!"
+  Write-Host "`n`nCongrats fellow Chefee! Your workstation is now set up for Chef Development!"
