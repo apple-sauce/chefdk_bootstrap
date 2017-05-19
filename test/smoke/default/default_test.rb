@@ -17,6 +17,10 @@ describe package('ConEmu 170402.x64') do
   it { should be_installed }
 end
 
+describe package('Oracle VM VirtualBox 5.0.34') do
+  it { should be_installed }
+end
+
 describe package('Vagrant') do
   it { should be_installed }
 end
