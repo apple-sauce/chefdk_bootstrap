@@ -23,6 +23,8 @@
   Set-Location "~\AppData\Local\Temp\cookbooks"
   C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/apple-sauce/chefdk_bootstrap.git
   C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/chocolatey/chocolatey-cookbook.git chocolatey
+  C:\opscode\chefdk\embedded\git\bin\git.exe clone hhttps://github.com/chef-cookbooks/windows.git windows
+
   C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/Microsoft/vscode.git vscode
   Set-Location "~\AppData\Local\Temp\cookbooks\chefdk_bootstrap"
   berks vendor
