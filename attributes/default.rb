@@ -27,5 +27,5 @@ when 'windows'
   default['chefdk_bootstrap']['vagrant']['source'] = 'https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1.msi'
   default['chefdk_bootstrap']['vagrant']['checksum'] = 'db1fef59dd15ac90b6f5cfad20af7e15eccd814556a81f46e5422386166789a6'
 when 'debian', 'rhel'
-  default['chefdk_bootstrap']['virtualbox']['version'] = '4.2'
+  default['chefdk_bootstrap']['virtualbox']['version'] = '5.0.34'
 end
