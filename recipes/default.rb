@@ -24,6 +24,9 @@ when 'windows'
     not_if '(& "C:\Program Files\ConEmu\ConEmu\ConEmuC.exe" /IsConEmu); $LASTEXITCODE -eq 1'
     guard_interpreter :powershell_script
   end
+
+  chocolatey_package 'visualstudiocode' do
+  end
 end
 # windows_package 'virtualbox' do
 #   action :install
