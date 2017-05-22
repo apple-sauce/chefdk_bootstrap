@@ -18,7 +18,7 @@ maintainer_email  'Apple-Sauce@Saucey.com'
 license           'All Rights Reserved'
 description       'Installs/Configures chefdk_bootstrap'
 long_description  'Installs/Configures chefdk_bootstrap'
-version           '0.1.4'
+version           '0.1.5'
 
 chef_version      '>= 12.1' if respond_to?(:chef_version)
 
