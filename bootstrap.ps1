@@ -22,25 +22,31 @@ if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
     Break
 }
 
-# run chef-client to bootstrap this machine 
-. { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -version 1.3.43 -channel stable  -project chefdk
+try {
+  # run chef-client to bootstrap this machine 
+  . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -version 1.3.43 -channel stable  -project chefdk
 
-# need to set location for downloading of chefdk_bootstrap as well as create folder cookbook 
-Set-Location "~\AppData\Local\Temp\"
-mkdir cookbooks
-Set-Location "~\AppData\Local\Temp\cookbooks"
+  # need to set location for downloading of chefdk_bootstrap as well as create folder cookbook 
+  Set-Location "~\AppData\Local\Temp\"
+  mkdir cookbooks
+  Set-Location "~\AppData\Local\Temp\cookbooks"
 
-# downloading of the chefdk_bootstrap cookbook to local machine
-C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/apple-sauce/chefdk_bootstrap.git
+  # downloading of the chefdk_bootstrap cookbook to local machine
+  C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/apple-sauce/chefdk_bootstrap.git
 
-# install chocolatey
-Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+  # install chocolatey
+  Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-# set location back to cookbook in order to run berks to get dependencies
-Set-Location "~\AppData\Local\Temp\cookbooks\chefdk_bootstrap"
-berks vendor
+  # set location back to cookbook in order to run berks to get dependencies
+  Set-Location "~\AppData\Local\Temp\cookbooks\chefdk_bootstrap"
+  berks vendor
 
-# run chef client to converge machine
-chef-client -A -z -l error -o 'chefdk_bootstrap'
+  # run chef client to converge machine
+  chef-client -A -z -l error -o 'chefdk_bootstrap'
+}
+catch {
+  write-output "Unable to install Chef tools. Please contact a Chef Admin"
+  break
+}
 
 Write-Host "`n`nCongrats fellow Chefee! Your workstation is now set up for Chef Development!"

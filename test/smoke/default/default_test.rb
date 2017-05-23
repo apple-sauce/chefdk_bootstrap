@@ -13,7 +13,7 @@ describe package('Microsoft Visual Studio Code') do
   it { should be_installed }
 end
 
-describe package('ConEmu 170402.x64') do
+describe package('ConEmu 170517.x64') do
   it { should be_installed }
 end
 
