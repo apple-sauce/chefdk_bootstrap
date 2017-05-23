@@ -7,6 +7,10 @@
 
 case node['platform_family']
 when 'windows'
+
+  chocolatey_package 'chocolatey' do
+  end
+
   chocolatey_package 'conemu' do
     # If conemu was installed outside chocolatey, it could be running this
     # installation script and we don't want to touch it

@@ -27,7 +27,7 @@
   C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/apple-sauce/chefdk_bootstrap.git
 
   # install chocolatey
-  Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+  # Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
   # set location back to cookbook in order to run berks to get dependencies
   Set-Location "~\AppData\Local\Temp\cookbooks\chefdk_bootstrap"
