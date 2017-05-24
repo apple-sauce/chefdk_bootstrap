@@ -49,4 +49,5 @@ catch {
   break
 }
 
+# Install successful!
 Write-Host "`n`nCongrats fellow Chefee! Your workstation is now set up for Chef Development!"

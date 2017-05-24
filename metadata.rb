@@ -18,12 +18,6 @@ maintainer_email  'Apple-Sauce@Saucey.com'
 license           'All Rights Reserved'
 description       'Installs/Configures chefdk_bootstrap'
 long_description  'Installs/Configures chefdk_bootstrap'
-version           '0.1.5'
+version           '0.1.6'
 
 chef_version      '>= 12.1' if respond_to?(:chef_version)
-
-# depends           'chocolatey'
-# depends           'vs_code'
-# depends           'chefdk'
-# depends           'vagrant'
-# depends           'virtualbox', '~> 1.0.3'
