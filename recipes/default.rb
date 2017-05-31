@@ -35,7 +35,7 @@ when 'windows'
     checksum node['chefdk_bootstrap']['vagrant']['checksum']
     returns [0, 1605, 1614, 1641]
   end
-end
+
 when 'mac_os_x'
   package 'conemu' do
   end
