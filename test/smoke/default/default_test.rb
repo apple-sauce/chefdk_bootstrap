@@ -5,9 +5,9 @@
 # The Inspec reference, with examples and extensive documentation, can be
 # found at http://inspec.io/docs/reference/resources/
 
-describe package('Chef Client v12.19.36') do
-  it { should be_installed }
-end
+# describe package('Chef Client v12.19.36') do
+#   it { should be_installed }
+# end
 
 describe package('Microsoft Visual Studio Code') do
   it { should be_installed }

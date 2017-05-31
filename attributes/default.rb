@@ -16,11 +16,10 @@
 # platform specific
 case node['platform_family']
 when 'mac_os_x'
-  default['chefdk_bootstrap']['virtualbox']['url'] = 'http://download.virtualbox.org/virtualbox/4.2.8/VirtualBox-4.2.8-83876-OSX.dmg'
+  default['chefdk_bootstrap']['virtualbox']['url'] = 'http://download.virtualbox.org/virtualbox/5.0.34/VirtualBox-5.0.34-113845-OSX.dmg'
+  default['chefdk_bootstrap']['virtualbox']['version'] = '5.0.34'
 when 'windows'
   # -----Virtual Box settings--------------
-  default['chefdk_bootstrap']['virtualbox']['url'] = ''
-  default['chefdk_bootstrap']['virtualbox']['version'] = ''
   default['chefdk_bootstrap']['virtualbox']['url'] = 'http://download.virtualbox.org/virtualbox/5.0.34/VirtualBox-5.0.34-113845-Win.exe'
   default['chefdk_bootstrap']['virtualbox']['version'] = '5.0.34'
   # -----Vagrant settings -----------------

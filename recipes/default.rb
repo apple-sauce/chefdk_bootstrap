@@ -36,3 +36,16 @@ when 'windows'
     returns [0, 1605, 1614, 1641]
   end
 end
+when 'mac_os_x'
+  package 'conemu' do
+  end
+
+  package 'visualstudiocode' do
+  end
+
+  package 'virtualbox' do
+  end
+
+  package 'Vagrant' do
+  end
+end
