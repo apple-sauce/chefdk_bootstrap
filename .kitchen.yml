@@ -16,7 +16,7 @@ verifier:
   name: inspec
 
 platforms:
-  - name: synax/Windows10 
+  - name: mwrock/Windows2016
     transport:
       name: winrm
 
