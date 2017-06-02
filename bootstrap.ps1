@@ -43,6 +43,9 @@ try {
 
   # run chef client to converge machine
   chef-client -A -z -l error -o 'chefdk_bootstrap'
+
+  # add vagrant-winrm plugin
+  vagrant plugin install vagrant-winrm
 }
 catch {
   write-output "Unable to install Chef tools. Please contact a Chef Admin"
