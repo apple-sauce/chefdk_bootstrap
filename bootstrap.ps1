@@ -36,9 +36,6 @@ try {
 
   # install chocolatey
   Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-
-  # add vagrant-winrm plugin
-  vagrant plugin install vagrant-winrm
   
   # set location back to cookbook in order to run berks to get dependencies
   Set-Location "~\AppData\Local\Temp\cookbooks\chefdk_bootstrap"
