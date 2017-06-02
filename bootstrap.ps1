@@ -37,6 +37,9 @@ try {
   # install chocolatey
   Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
+  # add vagrant-winrm plugin
+  vagrant plugin install vagrant-winrm
+  
   # set location back to cookbook in order to run berks to get dependencies
   Set-Location "~\AppData\Local\Temp\cookbooks\chefdk_bootstrap"
   berks vendor
@@ -44,8 +47,6 @@ try {
   # run chef client to converge machine
   chef-client -A -z -l error -o 'chefdk_bootstrap'
 
-  # add vagrant-winrm plugin
-  vagrant plugin install vagrant-winrm
 }
 catch {
   write-output "Unable to install Chef tools. Please contact a Chef Admin"
