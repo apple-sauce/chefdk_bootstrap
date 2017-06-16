@@ -30,7 +30,7 @@ when 'windows'
   windows_package 'Vagrant' do
     action :install
     installer_type :msi
-    version '1.9.1'
+    version node['chefdk_bootstrap']['vagrant']['version']
     source node['chefdk_bootstrap']['vagrant']['source']
     checksum node['chefdk_bootstrap']['vagrant']['checksum']
     returns [0, 1605, 1614, 1641]

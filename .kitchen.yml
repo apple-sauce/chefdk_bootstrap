@@ -16,7 +16,7 @@ verifier:
   name: inspec
 
 platforms:
-  - name: synax/Windows10 
+  - name: mwrock/Windows2016 
     transport:
       name: winrm
 
@@ -24,6 +24,11 @@ suites:
   - name: default
     run_list:
       - recipe[chefdk_bootstrap::default]
+    verifier:
+      inspec_tests:
+        - test/smoke/default
+    attributes:
+  - name: secondary
     verifier:
       inspec_tests:
         - test/smoke/default

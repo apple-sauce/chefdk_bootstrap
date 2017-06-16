@@ -16,15 +16,16 @@
 # platform specific
 case node['platform_family']
 when 'mac_os_x'
-  default['chefdk_bootstrap']['virtualbox']['url'] = 'http://download.virtualbox.org/virtualbox/5.0.34/VirtualBox-5.0.34-113845-OSX.dmg'
-  default['chefdk_bootstrap']['virtualbox']['version'] = '5.0.34'
+  default['chefdk_bootstrap']['virtualbox']['url'] = 'TBD'
+  default['chefdk_bootstrap']['virtualbox']['version'] = 'TBD'
 when 'windows'
   # -----Virtual Box settings--------------
-  default['chefdk_bootstrap']['virtualbox']['url'] = 'http://download.virtualbox.org/virtualbox/5.0.34/VirtualBox-5.0.34-113845-Win.exe'
-  default['chefdk_bootstrap']['virtualbox']['version'] = '5.0.34'
+  default['chefdk_bootstrap']['virtualbox']['url'] = 'http://download.virtualbox.org/virtualbox/5.1.22/VirtualBox-5.1.22-115126-Win.exe'
+  default['chefdk_bootstrap']['virtualbox']['version'] = '5.1.22'
   # -----Vagrant settings -----------------
-  default['chefdk_bootstrap']['vagrant']['source'] = 'https://releases.hashicorp.com/vagrant/1.9.1/vagrant_1.9.1.msi'
-  default['chefdk_bootstrap']['vagrant']['checksum'] = 'db1fef59dd15ac90b6f5cfad20af7e15eccd814556a81f46e5422386166789a6'
+  default['chefdk_bootstrap']['vagrant']['source'] = 'https://releases.hashicorp.com/vagrant/1.9.5/vagrant_1.9.5.msi'
+  default['chefdk_bootstrap']['vagrant']['checksum'] = '8ce945cd01d1273b628aa101e035716c246dfbddad29cccc8d96c873f77d386b'
+  default['chefdk_bootstrap']['vagrant']['version'] = '1.9.5'
 when 'debian', 'rhel'
-  default['chefdk_bootstrap']['virtualbox']['version'] = '5.0.34'
+  default['chefdk_bootstrap']['virtualbox']['version'] = 'TBD'
 end

@@ -21,11 +21,11 @@ Invoke-Expression $($ScriptFromGithHub.Content)
 ## What does it do?
 This cookbook installs the following programs:
   Tools               Version
-* ChefDK              1.3.43
+* ChefDK              1.4.3
 * Chocolatey:         latest
 * ConEmu:             latest
 * Visual Studio Code: latest
-* Vagrant:            1.9.1
-* Virtual Box:        5.0.34
+* Vagrant:            1.9.5
+* Virtual Box:        5.1.22
 
 ----
