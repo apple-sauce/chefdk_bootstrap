@@ -16,7 +16,11 @@ verifier:
   name: inspec
 
 platforms:
+<<<<<<< HEAD
   - name: mwrock/Windows2016 
+=======
+  - name: mwrock/Windows2016
+>>>>>>> 2dd72306de5e835b55b795bd0be3ff89dee4963f
     transport:
       name: winrm
 

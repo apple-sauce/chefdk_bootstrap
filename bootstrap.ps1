@@ -36,13 +36,14 @@ try {
 
   # install chocolatey
   Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-
+  
   # set location back to cookbook in order to run berks to get dependencies
   Set-Location "~\AppData\Local\Temp\cookbooks\chefdk_bootstrap"
   berks vendor
 
   # run chef client to converge machine
   chef-client -A -z -l error -o 'chefdk_bootstrap'
+
 }
 catch {
   write-output "Unable to install Chef tools. Please contact a Chef Admin"
