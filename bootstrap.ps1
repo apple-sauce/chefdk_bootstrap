@@ -45,23 +45,35 @@ try {
     else 
       {
         Write-Host "Upgrading the ChefDK from $installedVersion to $targetChefDk"
-        Write-Host "Uninstalling ChefDK version $installedVersion. This might take a while..."
+        Write-Host "Uninstalling ChefDK version $installedVersion."
         Invoke-CimMethod -InputObject $app -MethodName Uninstall
         if ( -not $? ) { promptContinue "Error uninstalling ChefDK version $installedVersion" }
         if (Test-Path $dotChefDKDir) 
           {
             Remove-Item -Recurse $dotChefDKDir
           }
-
       }
   
   Write-Host "Installing ChefDK version $targetChefDk. This might take a while..."
  . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -version $targetChefDk -channel stable  -project chefdk
 
   # need to set location for downloading of chefdk_bootstrap as well as create folder cookbook 
-  Set-Location "~\AppData\Local\Temp\"
-  mkdir cookbooks
-  Set-Location "~\AppData\Local\Temp\cookbooks"
+  $TARGETLOCATION = "~\AppData\Local\Temp\"
+  $TARGETLOCATIONDIR = "~\AppData\Local\Temp\cookbooks"
+
+  Set-Location  $TARGETLOCATION 
+  if(!(Test-Path -Path $TARGETLOCATIONDIR ))
+    {
+      mkdir cookbooks
+    }
+  
+  Set-Location  $TARGETLOCATIONDIR 
+  $TARGETLOCATIONCOOKBOOK = "~\AppData\Local\Temp\cookbook\chefdk_bootstrap"
+  if(Test-Path -Path $TARGETLOCATIONCOOKBOOK )
+    {
+    Write-Host "Removing old chefdk_bootstrap folder"
+     rmdir chefdk_bootstrap
+    }
 
   # downloading of the chefdk_bootstrap cookbook to local machine
   C:\opscode\chefdk\embedded\git\bin\git.exe clone https://github.com/apple-sauce/chefdk_bootstrap.git
