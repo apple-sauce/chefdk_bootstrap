@@ -30,24 +30,29 @@ try {
   $app = Get-CimInstance -classname win32_product -filter "Name like 'Chef Development Kit%'"
   $installedVersion = $app.Version
 
-    if ( $installedVersion -like "$targetChefDk*" ) {
-    Write-Host "The ChefDK version $installedVersion is already installed."
-    exit
-  } else {
-    if ( $installedVersion -eq $null ) {
-      Write-Host "No ChefDK found. Installing the ChefDK version $targetChefDk"
-      # run chef-client to bootstrap this machine 
-    
+    if ( $installedVersion -like "$targetChefDk*" ) 
+      {
+        Write-Host "The ChefDK version $installedVersion is already installed."
+        exit
+      } 
+    elseif ( $installedVersion -eq $null ) 
+          {
+            Write-Host "No ChefDK found. Installing the ChefDK version $targetChefDk"
+            # run chef-client to bootstrap this machine 
+          }
+      
+    else 
+      {
+        Write-Host "Upgrading the ChefDK from $installedVersion to $targetChefDk"
+        Write-Host "Uninstalling ChefDK version $installedVersion. This might take a while..."
+        Invoke-CimMethod -InputObject $app -MethodName Uninstall
+        if ( -not $? ) { promptContinue "Error uninstalling ChefDK version $installedVersion" }
+        if (Test-Path $dotChefDKDir) 
+          {
+            Remove-Item -Recurse $dotChefDKDir
+          }
 
-    } else {
-      Write-Host "Upgrading the ChefDK from $installedVersion to $targetChefDk"
-      Write-Host "Uninstalling ChefDK version $installedVersion. This might take a while..."
-      Invoke-CimMethod -InputObject $app -MethodName Uninstall
-      if ( -not $? ) { promptContinue "Error uninstalling ChefDK version $installedVersion" }
-      if (Test-Path $dotChefDKDir) {
-        Remove-Item -Recurse $dotChefDKDir
       }
-    }
   
   Write-Host "Installing ChefDK version $targetChefDk. This might take a while..."
  . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -version 2.0.28 -channel stable  -project chefdk
