@@ -31,45 +31,39 @@ try {
   $app = Get-CimInstance -classname win32_product -filter "Name like 'Chef Development Kit%'"
   $installedVersion = $app.Version
 
-    if ( $installedVersion -like "$targetChefDk*" ) 
-      {
-        Write-Host "The ChefDK version $installedVersion is already installed."
-        exit
-      } 
-    elseif ( $installedVersion -eq $null ) 
-          {
-            Write-Host "No ChefDK found. Installing the ChefDK version $targetChefDk"
-            # run chef-client to bootstrap this machine 
-          }
-      
-    else 
-      {
-        Write-Host "Upgrading the ChefDK from $installedVersion to $targetChefDk"
-        Write-Host "Uninstalling ChefDK version $installedVersion."
-        Invoke-CimMethod -InputObject $app -MethodName Uninstall
-        if ( -not $? ) { promptContinue "Error uninstalling ChefDK version $installedVersion" }
-        if (Test-Path $dotChefDKDir) 
-          {
-            Remove-Item -Recurse $dotChefDKDir
-          }
-      }
+  if ( $installedVersion -like "$targetChefDk*" ) 
+    {
+      Write-Host "The ChefDK version $installedVersion is already installed."
+      Break
+    } 
+  elseif ( $installedVersion -eq $null ) 
+        {
+          Write-Host "No ChefDK found. Installing the ChefDK version $targetChefDk"
+        }
+  else 
+    {
+      Write-Host "Upgrading the ChefDK from $installedVersion to $targetChefDk"
+      Write-Host "Uninstalling ChefDK version $installedVersion."
+      Invoke-CimMethod -InputObject $app -MethodName Uninstall
+      if ( -not $? ) { promptContinue "Error uninstalling ChefDK version $installedVersion" }
+      # if (Test-Path $dotChefDKDir) 
+      #   {
+      #     Remove-Item -Recurse $dotChefDKDir
+      #   }
+    }
   
   Write-Host "Installing ChefDK version $targetChefDk. This might take a while..."
  . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -version $targetChefDk -channel stable  -project chefdk
 
   # need to set location for downloading of chefdk_bootstrap as well as create folder cookbook 
-  $TARGETLOCATION = "~\AppData\Local\Temp\"
-  $TARGETLOCATIONDIR = "~\AppData\Local\Temp\cookbooks"
-
-  Set-Location  $TARGETLOCATION 
-  if(!(Test-Path -Path $TARGETLOCATIONDIR ))
+  Set-Location "~\AppData\Local\Temp\"
+  if(!(Test-Path -Path "~\AppData\Local\Temp\cookbooks"))
     {
       mkdir cookbooks
     }
   
-  Set-Location  $TARGETLOCATIONDIR 
-  $TARGETLOCATIONCOOKBOOK = "~\AppData\Local\Temp\cookbook\chefdk_bootstrap"
-  if(Test-Path -Path $TARGETLOCATIONCOOKBOOK )
+  Set-Location  "~\AppData\Local\Temp\cookbooks"
+  if(Test-Path -Path "~\AppData\Local\Temp\cookbooks\chefdk_bootstrap" )
     {
     Write-Host "Removing old chefdk_bootstrap folder"
      rmdir chefdk_bootstrap
