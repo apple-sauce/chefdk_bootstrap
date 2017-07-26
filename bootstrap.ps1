@@ -15,7 +15,7 @@
 $env:HOME = $env:USERPROFILE
 $env:Path += ";C:\opscode\chefdk\bin"
 $dotChefDKDir = Join-Path -path $env:LOCALAPPDATA -childPath 'chefdk'
-$targetChefDk = "2.0.28"
+$targetChefDk = "2.1.1"
 
 # Make sure you're an admin of this machine 
 if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
@@ -56,7 +56,7 @@ try {
       }
   
   Write-Host "Installing ChefDK version $targetChefDk. This might take a while..."
- . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -version 2.0.28 -channel stable  -project chefdk
+ . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -version $targetChefDk -channel stable  -project chefdk
 
   # need to set location for downloading of chefdk_bootstrap as well as create folder cookbook 
   Set-Location "~\AppData\Local\Temp\"
