@@ -21,7 +21,7 @@ Invoke-Expression $($ScriptFromGithHub.Content)
 ## What does it do?
 This cookbook installs the following programs:
   Tools               Version
-* ChefDK              1.4.3
+* ChefDK              2.0.28
 * Chocolatey:         latest
 * ConEmu:             latest
 * Visual Studio Code: latest

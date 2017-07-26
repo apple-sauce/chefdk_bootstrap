@@ -18,12 +18,12 @@ maintainer_email  'Apple-Sauce@Saucey.com'
 license           'All Rights Reserved'
 description       'Installs/Configures laptop with chefdk and other tools needed to code with chef'
 long_description  'Installs/Configures the following tools:
-                   ChefDK 1.4.3
+                   ChefDK 2.0.28
                    Chocolatey: latest
                    ConEmu: latest
                    Visual Studio Code: latest
                    Vagrant: 1.9.5
                    Virtual Box: 5.1.22'
-version           '0.1.10'
+version           '0.2.1'
 
 chef_version      '>= 12.1' if respond_to?(:chef_version)
