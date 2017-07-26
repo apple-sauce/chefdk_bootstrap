@@ -65,8 +65,8 @@ try {
   Set-Location  "~\AppData\Local\Temp\cookbooks"
   if(Test-Path -Path "~\AppData\Local\Temp\cookbooks\chefdk_bootstrap" )
     {
-    Write-Host "Removing old chefdk_bootstrap folder"
-     rmdir chefdk_bootstrap
+      Write-Host "Removing old chefdk_bootstrap folder"
+      rmdir -Recurse -Force chefdk_bootstrap
     }
 
   # downloading of the chefdk_bootstrap cookbook to local machine
