@@ -15,7 +15,7 @@
 $env:HOME = $env:USERPROFILE
 $env:Path += ";C:\opscode\chefdk\bin"
 $dotChefDKDir = Join-Path -path $env:LOCALAPPDATA -childPath 'chefdk'
-$targetChefDk = '2.1.0'
+$targetChefDk = '2.1.11'
 
 # Make sure you're an admin of this machine 
 if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
