@@ -28,8 +28,8 @@ suites:
       inspec_tests:
         - test/smoke/default
     attributes:
-  # - name: secondary
-  #   verifier:
-  #     inspec_tests:
-  #       - test/smoke/default
-  #   attributes:
+  - name: secondary
+    verifier:
+      inspec_tests:
+        - test/smoke/default
+    attributes:
