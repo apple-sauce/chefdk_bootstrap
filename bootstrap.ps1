@@ -17,6 +17,9 @@ $env:Path += ";C:\opscode\chefdk\bin"
 $dotChefDKDir = Join-Path -path $env:LOCALAPPDATA -childPath 'chefdk'
 $targetChefDk = '2.1.0' #Had to manually put in version in line 56. If you change this version here, change it there as well
 
+#Set home environment path
+[Environment]::SetEnvironmentVariable("HOME", $Env:USERPROFILE, "User")
+
 # Make sure you're an admin of this machine 
 if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
   [Security.Principal.WindowsBuiltInRole] "Administrator")) {
