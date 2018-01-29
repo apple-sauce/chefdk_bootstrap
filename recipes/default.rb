@@ -17,6 +17,9 @@ when 'windows'
   chocolatey_package 'visualstudiocode' do
   end
 
+  chocolatey_package 'poshgit' do
+  end
+
   windows_package 'virtualbox' do
     action :install
     installer_type :custom
