@@ -56,7 +56,7 @@ try {
     }
   
   Write-Host "Installing ChefDK version $targetChefDk. This might take a while..."
- . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -version 2.1.0 -channel current -project chefdk
+ . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -version 2.1.11 -channel current -project chefdk
 
   # need to set location for downloading of chefdk_bootstrap as well as create folder cookbook 
   Set-Location "~\AppData\Local\Temp\"
