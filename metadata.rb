@@ -24,6 +24,6 @@ long_description  'Installs/Configures the following tools:
                    Visual Studio Code: latest
                    Vagrant: 1.9.5
                    Virtual Box: 5.1.22'
-version           '0.2.4'
+version           '0.2.5'
 
 chef_version      '>= 12.1' if respond_to?(:chef_version)
