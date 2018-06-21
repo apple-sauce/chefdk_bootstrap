@@ -60,10 +60,6 @@ try {
       Write-Host "Uninstalling ChefDK version $installedVersion."
       Invoke-CimMethod -InputObject $app -MethodName Uninstall
       if ( -not $? ) { promptContinue "Error uninstalling ChefDK version $installedVersion" }
-      # if (Test-Path $dotChefDKDir) 
-      #   {
-      #     Remove-Item -Recurse $dotChefDKDir
-      #   }
     }
   
   Write-Host "Installing ChefDK version $targetChefDk. This might take a while..."

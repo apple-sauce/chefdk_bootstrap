@@ -19,10 +19,10 @@ chef_version      '>= 12.1' if respond_to?(:chef_version)
 license           'All Rights Reserved'
 description       'Installs/Configures laptop with chefdk and other tools needed to code with chef'
 long_description  'Installs/Configures the following tools:
-                   ChefDK 2.0.28
+                   ChefDK 3.0.36
                    Chocolatey: latest
                    ConEmu: latest
                    Visual Studio Code: latest
-                   Vagrant: 1.9.5
-                   Virtual Box: 5.1.23'
-version           '0.2.11'
+                   Vagrant: 2.1.1
+                   Virtual Box: 5.2.12'
+version           '0.2.12'
