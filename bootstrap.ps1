@@ -26,22 +26,18 @@ if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
     Break
 }
 
-$msgBoxInput =  [System.Windows.MessageBox]::Show('Installing Chefdk will reboot your laptop. Did you want to continue?','Chefdk Install','YesNoCancel','Error')
+[System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms") 
+$OUTPUT= [System.Windows.Forms.MessageBox]::Show("Installing Chefdk will automatically reboot your laptop. Did you want to continue?" , "Chefdk Install" , 1) 
 
-  switch  ($msgBoxInput) {
-  'Yes' {
-          Write-Host "Your laptop will reboot after the installation"
-        }
-  'No'  {
-          Write-Warning "You have choosen no. Chefdk will not be installed"
-          Break 
-        }
-  'Cancel' {
-          Write-Warning "Cancelling the install. Chefdk will not be installed"
-          Break 
-        }
-  }
-
+if ($OUTPUT -eq "OK" ) 
+{
+	Write-Host "Your laptop will reboot after the installation"
+} 
+else 
+{ 
+	Write-Warning "Cancelling the install. Chefdk will not be installed"
+	Break 
+} 
 
 try {
   # Install ChefDK from chef omnitruck, unless installed already
