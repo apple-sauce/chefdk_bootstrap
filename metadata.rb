@@ -24,5 +24,5 @@ long_description  'Installs/Configures the following tools:
                    ConEmu: latest
                    Visual Studio Code: latest
                    Vagrant: 1.9.5
-                   Virtual Box: 5.1.22'
+                   Virtual Box: 5.1.23'
 version           '0.2.11'
