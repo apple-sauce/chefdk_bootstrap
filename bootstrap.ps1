@@ -27,14 +27,14 @@ if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 }
 
 [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
-$OUTPUT= [System.Windows.Forms.MessageBox]::Show('Installing Chefdk will reboot your laptop as soon as installation is complete. Please save all unsaved work before hitting OK, otherwise hit Cancel to abort.','Chefdk Install', 1)
+$OUTPUT= [System.Windows.Forms.MessageBox]::Show("Installing Chefdk will reboot your laptop as soon as installation is complete. `r`n`r`nPlease save all unsaved work before hitting OK, `r`n`r`nOtherwise hit Cancel to abort.","Chefdk Install", 1)
 if ($OUTPUT -eq "OK" ) 
 {
-	Write-Host "Your laptop will reboot after the installation"
+	Write-Host "Your laptop will reboot after the installation."
 } 
-else 
+else
 { 
-	Write-Warning "Cancelling the install. Chefdk will not be installed"
+	Write-Warning "Cancelling the Chefdk install."
 	Break 
 }
 
