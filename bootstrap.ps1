@@ -13,9 +13,8 @@
 # limitations under the License.
 
 $env:HOME = $env:USERPROFILE
-$env:Path += ";C:\opscode\chefdk\bin"
 $dotChefDKDir = Join-Path -path $env:LOCALAPPDATA -childPath 'chefdk'
-$targetChefDk = '2.1.11' #Had to manually put in version in line 56. If you change this version here, change it there as well
+$targetChefDk = '3.0.36' #Had to manually put in version in line 56. If you change this version here, change it there as well
 
 #Set home environment path
 [Environment]::SetEnvironmentVariable("HOME", $Env:USERPROFILE, "User")
@@ -26,6 +25,23 @@ if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
     Write-Warning "You do not have Administrator rights to run this script!`nPlease re-run this script as an Administrator!"
     Break
 }
+
+$msgBoxInput =  [System.Windows.MessageBox]::Show('Installing Chefdk will reboot your laptop. Did you want to continue?','Chefdk Install','YesNoCancel','Error')
+
+  switch  ($msgBoxInput) {
+  'Yes' {
+          Write-Host "Your laptop will reboot after the installation"
+        }
+  'No'  {
+          Write-Warning "You have choosen no. Chefdk will not be installed"
+          Break 
+        }
+  'Cancel' {
+          Write-Warning "Cancelling the install. Chefdk will not be installed"
+          Break 
+        }
+  }
+
 
 try {
   # Install ChefDK from chef omnitruck, unless installed already
@@ -56,7 +72,10 @@ try {
     }
   
   Write-Host "Installing ChefDK version $targetChefDk. This might take a while..."
- . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -version 2.1.11 -channel stable -project chefdk
+ . { Invoke-WebRequest -useb https://omnitruck.chef.io/install.ps1 } | Invoke-Expression; install -version 3.0.36 -channel stable -project chefdk
+
+  #Set path now that chefdk is installed 
+  $env:Path += ";C:\opscode\chefdk\bin"
 
   # need to set location for downloading of chefdk_bootstrap as well as create folder cookbook 
   Set-Location "~\AppData\Local\Temp\"
