@@ -26,6 +26,7 @@ if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
     Break
 }
 
+[System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms") 
 $msgBoxInput =  [System.Windows.MessageBox]::Show('Installing Chefdk will reboot your laptop as soon as installation is complete. Please save all unsaved work before hitting OK, otherwise hit Cancel to abort.','Chefdk Install','YesNoCancel','Error')
 
   switch  ($msgBoxInput) {
