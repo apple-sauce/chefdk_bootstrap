@@ -25,7 +25,7 @@ This cookbook installs the following programs:
 * Chocolatey:         latest
 * ConEmu:             latest
 * Visual Studio Code: latest
-* Vagrant:            1.9.5
-* Virtual Box:        5.1.22
+* Vagrant:            2.1.1
+* Virtual Box:        5.2.12
 
 ----
